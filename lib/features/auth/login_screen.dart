@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tech_commerce_ui/core/constants/app_colors.dart';
 import 'package:flutter_tech_commerce_ui/core/constants/app_constants.dart';
 import 'package:flutter_tech_commerce_ui/core/constants/app_text_styles.dart';
+import 'package:flutter_tech_commerce_ui/features/auth/home/home_screen.dart';
+import 'package:flutter_tech_commerce_ui/features/auth/register_screen.dart';
 import 'package:flutter_tech_commerce_ui/widgets/como_button.dart';
 import 'package:flutter_tech_commerce_ui/widgets/como_text_field.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -29,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(AppConstants.paddingL),
@@ -73,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
               const SizedBox(height: AppConstants.paddingL * 2),
-              Text('Email', style: AppTextStyles.titleSmall),
+              Text('Email', style: AppTextStyles.titleSmall.copyWith(color: AppColors.primary)),
               const SizedBox(height: AppConstants.paddingS),
               ComoTextField(
                 controller: _emailController,
@@ -88,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
               const SizedBox(height: AppConstants.paddingL),
 
-              Text('Password', style: AppTextStyles.titleSmall),
+              Text('Password', style: AppTextStyles.titleSmall.copyWith(color: AppColors.primary)),
               const SizedBox(height: AppConstants.paddingS),
 
               ComoTextField(
@@ -127,9 +130,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             _rememberMe = value ?? false;
                           });
                         },
-                        activeColor: AppColors.primary,
+                        activeColor: AppColors.textSecondary,
+                        
                       ),
-                      Text('Remember me', style: AppTextStyles.bodyMedium),
+                      Text('Remember me', style: AppTextStyles.bodyMedium.copyWith(color:AppColors.primary)),
                     ],
                   ),
                   TextButton(
@@ -152,7 +156,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => const SizedBox()),
+                    MaterialPageRoute(builder: (_) => const HomeScreen()),
                   );
                 },
               ),
@@ -204,13 +208,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Text(
                     "Don't have an account? ",
-                    style: AppTextStyles.bodyMedium,
+                    style: AppTextStyles.bodyMedium.copyWith(color:AppColors.primary),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const SizedBox()),
+                        MaterialPageRoute(builder: (_) => const RegisterScreen()),
                       );
                     },
                     child: Text(
